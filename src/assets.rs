@@ -8,7 +8,7 @@ impl Assets {
     pub async fn new() -> Assets {
         Assets {
             terrain:vec![
-                load_texture("../assets/terrain/turf.png").await.unwrap(),
+                load_texture("/assets/terrain/turf.png").await.unwrap(),
             ]
         }
     }
