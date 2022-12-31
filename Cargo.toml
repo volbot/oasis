@@ -1,0 +1,13 @@
+[package]
+name = "oasis"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+macroquad = "0.3.25"
+pathfinding = "3.0.13"
+noise = "0.7.0"
+getrandom = { version = "0.2.7", features = ["js"] }
