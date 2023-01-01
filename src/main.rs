@@ -13,10 +13,21 @@ pub mod util;
 #[macroquad::main("Oasis")]
 async fn main() {
     clear_background(RED);
-    let t = Terrain::new();
+    let mut t = Terrain::new();
     let a = Assets::new().await;
     let mut p = Player::new(Vec2::new(350.,350.));
     let mut c = Camera::new((800,800), (0.,0.));
+    t.top[4][4][3]=0;
+    t.top[4][3][3]=0;
+    t.top[3][4][3]=0;
+    t.top[3][3][3]=0;
+    t.top[4][4][4]=0;
+    t.top[4][3][4]=0;
+    t.top[3][4][4]=0;
+    t.top[3][3][4]=0;
+    t.top[3][2][4]=0;
+    t.top[2][3][4]=0;
+    t.top[2][2][4]=0;
     loop {
         t.draw(&c, &a);
         p.walk();

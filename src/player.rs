@@ -2,8 +2,8 @@ use macroquad::prelude::*;
 use crate::{camera::Camera, assets::Assets};
 
 pub struct Player {
-    pub loc: Vec2,
-    pub dir: f32,
+    pub loc: Vec2, //location as x,y vector
+    pub dir: f32, //direction in radians
 }
 
 impl Player {
@@ -15,7 +15,7 @@ impl Player {
          let dirs = (is_key_down(KeyCode::W),
                     is_key_down(KeyCode::D),
                     is_key_down(KeyCode::S),
-                    is_key_down(KeyCode::A));
+                    is_key_down(KeyCode::A)); //4-tuple of booleans
          let mut temp = self.loc.clone();
 
          let movespeed = 3.;
@@ -35,7 +35,7 @@ impl Player {
          if temp == self.loc {
              return
          }
-         if temp.x != self.loc.x && temp.y != self.loc.y {
+         if temp.x != self.loc.x && temp.y != self.loc.y { //check for diagonal movement
              if dirs.0 {
                 temp.y += movespeed - (movespeed.powi(2)/2.).sqrt();
              }
@@ -60,7 +60,6 @@ impl Player {
         cam_end.1+=cam.res.1 as f32;
         if self.loc.x > cam_start.0 && self.loc.x < cam_end.0 &&
             self.loc.y > cam_start.1 && self.loc.y < cam_end.1 {
-                println!("{}",self.dir);
                 let par = DrawTextureParams {
                     rotation: self.dir,
                     ..Default::default()
