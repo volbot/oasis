@@ -1,7 +1,8 @@
 use macroquad::texture::{Texture2D, load_texture};
 
 pub struct Assets {
-    pub terrain: Vec<Texture2D>
+    pub terrain: Vec<Texture2D>,
+    pub player: Vec<Texture2D>,
 }
 
 impl Assets {
@@ -9,7 +10,10 @@ impl Assets {
         Assets {
             terrain:vec![
                 load_texture("assets/terrain/turf.png").await.unwrap(),
-            ]
+            ],
+            player:vec![
+                load_texture("assets/entity/player/right.png").await.unwrap(),
+            ],
         }
     }
 }
