@@ -42,4 +42,6 @@ pub fn input_camera_movement(cam: &mut Camera) {
 pub fn input_camera_zoom(cam: &mut Camera) {
     let i = mouse_wheel().1;
     cam.scale += i*0.1;
+    if cam.scale <= 0.2 {cam.scale = 0.2;}
+    if cam.scale >= 2. {cam.scale = 2.;}
 }
