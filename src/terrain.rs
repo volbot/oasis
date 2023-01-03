@@ -19,9 +19,9 @@ impl Terrain {
         while x < self.top[0].len() {
             while y < self.top.len() {
                 if !(x as f32 * 64. * cam.scale < (cam.corner.0 - 64.) * cam.scale || 
-                     x as f32 > (cam.corner.0 + cam.res.0 as f32) * cam.scale ||
+                     x as f32 > cam.corner.0 + (cam.res.0 as f32 / cam.scale) ||
                      y as f32 * 64. * cam.scale < (cam.corner.1 - 64.) * cam.scale || 
-                     y as f32 > (cam.corner.1 + cam.res.1 as f32) * cam.scale) {
+                     y as f32 > cam.corner.1 + (cam.res.1 as f32 / cam.scale)) {
                     let tile = self.top[x][y];
                     if tile > 0 {
                         let par = DrawTextureParams {
