@@ -1,14 +1,15 @@
 use macroquad::prelude::*;
-use crate::{camera::Camera, assets::Assets};
+use crate::{camera::Camera, assets::Assets, inventory::Inventory};
 
 pub struct Player {
     pub loc: Vec2, //location as x,y vector
     pub dir: f32, //direction in radians
+    pub inv: Inventory,
 }
 
 impl Player {
     pub fn new(loc: Vec2) -> Player {
-        Player { loc, dir: 0. }
+        Player { loc, dir: 0., inv: Inventory::new() }
     }
 
     pub fn walk(&mut self) {
@@ -65,8 +66,8 @@ impl Player {
                     ..Default::default()
                 };
                 draw_texture_ex(*a.player.get(0).unwrap(), 
-                             self.loc.x - cam_start.0, 
-                             self.loc.y - cam_start.1, 
+                             (self.loc.x - cam_start.0)*cam.scale, 
+                             (self.loc.y - cam_start.1)*cam.scale, 
                              WHITE, par);
             }
     }

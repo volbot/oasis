@@ -38,3 +38,8 @@ pub fn input_camera_movement(cam: &mut Camera) {
         cam.grab_loc = None;
     }
 }
+
+pub fn input_camera_zoom(cam: &mut Camera) {
+    let i = mouse_wheel().1;
+    cam.scale += i*0.1
+}

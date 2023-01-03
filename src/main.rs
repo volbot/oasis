@@ -1,7 +1,7 @@
 use assets::Assets;
 use macroquad::prelude::*;
 use terrain::Terrain;
-use camera::{Camera, input_camera_movement};
+use camera::{Camera, input_camera_movement, input_camera_zoom};
 use player::{Player};
 
 pub mod terrain;
@@ -9,6 +9,8 @@ pub mod camera;
 pub mod assets;
 pub mod player;
 pub mod util;
+pub mod item;
+pub mod inventory;
 
 #[macroquad::main("Oasis")]
 async fn main() {
@@ -29,6 +31,7 @@ async fn main() {
         p.walk();
         p.draw(&c, &a);
         input_camera_movement(&mut c);
+        input_camera_zoom(&mut c);
         next_frame().await;
     }
 }
