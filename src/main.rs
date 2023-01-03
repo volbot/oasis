@@ -16,7 +16,7 @@ async fn main() {
     let mut t = Terrain::new();
     let a = Assets::new().await;
     let mut p = Player::new(Vec2::new(350.,350.));
-    let mut c = Camera::new((800,800), (0.,0.));
+    let mut c = Camera::new((1920,1080), (0.,0.));
     t.top[24][24]=0;
     t.top[24][23]=0;
     t.top[23][24]=0;
