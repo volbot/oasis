@@ -1,0 +1,13 @@
+/home/drew/Desktop/Drive1/Main/GItHub_Projects/oasis/target/debug/deps/gif-9164c58639aba6dd.rmeta: /home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/lib.rs /home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/traits.rs /home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/common.rs /home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/reader/mod.rs /home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/reader/decoder.rs /home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/encoder.rs /home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/../README.md
+
+/home/drew/Desktop/Drive1/Main/GItHub_Projects/oasis/target/debug/deps/libgif-9164c58639aba6dd.rlib: /home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/lib.rs /home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/traits.rs /home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/common.rs /home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/reader/mod.rs /home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/reader/decoder.rs /home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/encoder.rs /home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/../README.md
+
+/home/drew/Desktop/Drive1/Main/GItHub_Projects/oasis/target/debug/deps/gif-9164c58639aba6dd.d: /home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/lib.rs /home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/traits.rs /home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/common.rs /home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/reader/mod.rs /home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/reader/decoder.rs /home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/encoder.rs /home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/../README.md
+
+/home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/lib.rs:
+/home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/traits.rs:
+/home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/common.rs:
+/home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/reader/mod.rs:
+/home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/reader/decoder.rs:
+/home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/encoder.rs:
+/home/drew/.cargo/registry/src/github.com-1ecc6299db9ec823/gif-0.11.4/src/../README.md:
