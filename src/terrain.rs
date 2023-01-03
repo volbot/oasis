@@ -1,4 +1,3 @@
-use macroquad::texture::draw_texture;
 use macroquad::prelude::*;
 
 use crate::camera::Camera;
@@ -19,10 +18,10 @@ impl Terrain {
         let mut y = 0;
         while x < self.top[0].len() {
             while y < self.top.len() {
-                if !(x as f32 * 64. * cam.scale < cam.corner.0 - 64. * cam.scale || 
-                     x as f32 > cam.corner.0 + cam.res.0 as f32 * cam.scale ||
-                     y as f32 * 64. * cam.scale < cam.corner.1 - 64. * cam.scale || 
-                     y as f32 > cam.corner.1 + cam.res.1 as f32 * cam.scale) {
+                if !(x as f32 * 64. * cam.scale < (cam.corner.0 - 64.) * cam.scale || 
+                     x as f32 > (cam.corner.0 + cam.res.0 as f32) * cam.scale ||
+                     y as f32 * 64. * cam.scale < (cam.corner.1 - 64.) * cam.scale || 
+                     y as f32 > (cam.corner.1 + cam.res.1 as f32) * cam.scale) {
                     let tile = self.top[x][y];
                     if tile > 0 {
                         let par = DrawTextureParams {
@@ -30,8 +29,8 @@ impl Terrain {
                             ..Default::default()
                         };
                         draw_texture_ex(*a.terrain.get(tile-1).unwrap(),
-                        (x * 64) as f32 * cam.scale - cam.corner.0, 
-                        (y * 64) as f32 * cam.scale - cam.corner.1, 
+                        ((x * 64) as f32 - cam.corner.0)*cam.scale, 
+                        ((y * 64) as f32 - cam.corner.1)*cam.scale, 
                         WHITE, par);
                     }
                 }
