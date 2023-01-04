@@ -1,4 +1,5 @@
 use assets::Assets;
+use buildlayer::BuildLayer;
 use macroquad::prelude::*;
 use terrain::Terrain;
 use camera::{Camera, input_camera_movement, input_camera_zoom};
@@ -11,10 +12,22 @@ pub mod player;
 pub mod util;
 pub mod item;
 pub mod inventory;
+pub mod buildlayer;
 
 #[macroquad::main("Oasis")]
 async fn main() {
     clear_background(RED);
+    let mut bla: Vec<Vec<BuildLayer>> = vec![];
+    let mut x = 0;
+    while x < 5 {
+        bla.push(vec![BuildLayer::new(),
+                      BuildLayer::new(),
+                      BuildLayer::new(),
+                      BuildLayer::new(),
+                      BuildLayer::new(),
+        ]);
+        x+=1;
+    }
     let mut t = Terrain::new();
     let a = Assets::new().await;
     let mut p = Player::new(Vec2::new(350.,350.));
