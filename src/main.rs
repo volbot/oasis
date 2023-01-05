@@ -1,10 +1,9 @@
 use assets::Assets;
-use build::{BuiltObject, BuildMap};
+use build::BuildMap;
 use macroquad::prelude::*;
 use terrain::Terrain;
 use camera::{Camera, input_camera_movement, input_camera_zoom};
 use player::Player;
-use util::Direction;
 
 pub mod terrain;
 pub mod camera;
@@ -19,7 +18,6 @@ pub mod build;
 async fn main() {
     clear_background(RED);
     let mut bm = BuildMap::new(5);
-    let mut x = 0;
     bm.place("concrete".to_string(),(10.5,10.));
     bm.place("concrete".to_string(),(10.,9.5));
     bm.place("concrete".to_string(),(10.,10.));
