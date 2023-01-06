@@ -1,56 +1,59 @@
 use macroquad::prelude::*;
-use crate::{camera::Camera, assets::Assets, inventory::Inventory};
+use crate::{camera::Camera, assets::Assets, inventory::Inventory, build::{BuildMap, BuildLayer}};
 
 pub struct Player {
-    pub loc: Vec2, //location as x,y vector
+    pub loc: (f32, f32), //location as x,y vector
     pub dir: f32, //direction in radians
     pub inv: Inventory,
 }
 
 impl Player {
-    pub fn new(loc: Vec2) -> Player {
+    pub fn new(loc: (f32, f32)) -> Player {
         Player { loc, dir: 0., inv: Inventory::new() }
     }
 
-    pub fn walk(&mut self) {
+    pub fn walk(&mut self, bl: &BuildLayer) {
         let dirs = (is_key_down(KeyCode::W),
         is_key_down(KeyCode::D),
         is_key_down(KeyCode::S),
         is_key_down(KeyCode::A)); //4-tuple of booleans
         let mut temp = self.loc.clone();
 
-        let movespeed = 3.;
+        let movespeed = 0.04;
 
         if dirs.0 {
-            temp.y -= movespeed;
+            temp.1 -= movespeed;
         }
         if dirs.1 {
-            temp.x += movespeed;
+            temp.0 += movespeed;
         }
         if dirs.2 {
-            temp.y += movespeed;
+            temp.1 += movespeed;
         }
         if dirs.3 {
-            temp.x -= movespeed;
+            temp.0 -= movespeed;
         }
         if temp == self.loc {
             return
         }
-        if temp.x != self.loc.x && temp.y != self.loc.y { //check for diagonal movement
+        if temp.0 != self.loc.0 && temp.1 != self.loc.1 { //check for diagonal movement
             if dirs.0 {
-                temp.y += movespeed - (movespeed.powi(2)/2.).sqrt();
+                temp.1 += movespeed - (movespeed.powi(2)/2.).sqrt();
             }
             if dirs.1 {
-                temp.x -= movespeed - (movespeed.powi(2)/2.).sqrt();
+                temp.0 -= movespeed - (movespeed.powi(2)/2.).sqrt();
             }
             if dirs.2 {
-                temp.y -= movespeed - (movespeed.powi(2)/2.).sqrt();
+                temp.1 -= movespeed - (movespeed.powi(2)/2.).sqrt();
             }
             if dirs.3 {
-                temp.x += movespeed - (movespeed.powi(2)/2.).sqrt();
+                temp.0 += movespeed - (movespeed.powi(2)/2.).sqrt();
             }
         }
-        self.dir = (temp.y-self.loc.y).atan2(temp.x-self.loc.x);
+        self.dir = (temp.1-self.loc.1).atan2(temp.0-self.loc.0);
+        if bl.collide(temp) {
+            return
+        }
         self.loc = temp;
     }
 
@@ -66,8 +69,8 @@ impl Player {
             ..Default::default()
         };
         draw_texture_ex(*a.player.get(0).unwrap(), 
-                        (self.loc.x - cam_start.0)*cam.scale, 
-                        (self.loc.y - cam_start.1)*cam.scale, 
+                        (self.loc.0 * 64. - cam_start.0)*cam.scale, 
+                        (self.loc.1 * 64. - cam_start.1)*cam.scale, 
                         WHITE, par);
     }
 }

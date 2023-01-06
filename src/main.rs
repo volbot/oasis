@@ -24,7 +24,7 @@ async fn main() {
     bm.place("concrete".to_string(),(10.,10.5));
     let mut t = Terrain::new();
     let a = Assets::new().await;
-    let mut p = Player::new(Vec2::new(350.,350.));
+    let mut p = Player::new((7.,7.));
     let mut c = Camera::new((1920,1080), (0.,0.));
     t.top[24][24]=0;
     t.top[24][23]=0;
@@ -35,9 +35,9 @@ async fn main() {
     t.top[22][22]=0;
     loop {
         t.draw(&c, &a);
-        bm.draw(&c, &a);
-        p.walk();
+        p.walk(bm.get(p.loc).unwrap());
         p.draw(&c, &a);
+        bm.draw(&c, &a);
         input_camera_movement(&mut c);
         input_camera_zoom(&mut c);
         next_frame().await;
