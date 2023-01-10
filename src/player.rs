@@ -1,5 +1,5 @@
 use macroquad::prelude::*;
-use crate::{camera::Camera, assets::Assets, inventory::Inventory, build::BuildLayer};
+use crate::{camera::Camera, assets::Assets, inventory::Inventory, build::BuildLayer, terrain::Terrain};
 
 pub struct Player {
     pub loc: (f32, f32), //location as x,y vector
@@ -12,7 +12,7 @@ impl Player {
         Player { loc, dir: 0., inv: Inventory::new() }
     }
 
-    pub fn walk(&mut self, bl: &BuildLayer) {
+    pub fn walk(&mut self, t: &Terrain, bl: &BuildLayer) {
         let dirs = (is_key_down(KeyCode::W),
         is_key_down(KeyCode::D),
         is_key_down(KeyCode::S),
@@ -51,10 +51,10 @@ impl Player {
             }
         }
         self.dir = (temp.1-self.loc.1).atan2(temp.0-self.loc.0);
-        if bl.collide((temp.0,self.loc.1)) {
+        if bl.collide((temp.0,self.loc.1)) || t.top[temp.0.round() as usize][self.loc.1.round() as usize] == 0 || temp.0 < 0. || temp.0 >= (t.top.len()-1) as f32{
             temp.0 = self.loc.0;
         }
-        if bl.collide((self.loc.0,temp.1)) {
+        if bl.collide((self.loc.0,temp.1)) || t.top[self.loc.0.round() as usize][temp.1.round() as usize] == 0 || temp.1 < 0. || temp.1 >= (t.top.len()-1) as f32{
             temp.1 = self.loc.1;
         }
         self.loc = temp;

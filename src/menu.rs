@@ -2,7 +2,6 @@ use macroquad::texture::{draw_texture_ex, draw_texture};
 use macroquad::prelude::*;
 
 use crate::assets::Assets;
-use crate::camera::Camera;
 use crate::player::Player;
 
 pub struct MenuSwitch {

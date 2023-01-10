@@ -38,7 +38,7 @@ async fn main() {
     t.top[22][22]=0;
     loop {
         t.draw(&c, &a);
-        p.walk(bm.get(p.loc).unwrap());
+        p.walk(&t, bm.get(p.loc).unwrap());
         p.draw(&c, &a);
         bm.draw(&c, &a);
         ms.draw(&p, &a);
