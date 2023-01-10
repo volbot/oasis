@@ -78,17 +78,17 @@ pub struct BuiltObject {
     pub str_id: String,
     pub dir: Direction,
     pub pos: (f32, f32),
-    pub size: (f32, f32),
+    pub size: (f32, f32, f32),
 }
 
 impl BuiltObject {
-    pub fn new(str_id: String, dir: Direction, pos: (f32, f32,)) -> BuiltObject {
-        BuiltObject{str_id, dir, pos, size: (32.,64.)}
+    pub fn new(str_id: String, dir: Direction, pos: (f32, f32)) -> BuiltObject {
+        BuiltObject{str_id, dir, pos, size: (32.,32.,24.)}
     }
 
     pub fn draw(&self, cam: &Camera, a: &Assets) {
         let par = DrawTextureParams {
-            dest_size: Some(Vec2::new(self.size.0*cam.scale,self.size.1*cam.scale)),
+            dest_size: Some(Vec2::new(self.size.0*cam.scale,(self.size.1+self.size.2)*cam.scale)),
             ..Default::default()
         };
         draw_texture_ex(*a.objects.get(self.str_id.as_str()).unwrap(), 
@@ -98,6 +98,6 @@ impl BuiltObject {
 
     pub fn collide(&self, pos: (f32,f32)) -> bool {
         return pos.0 > self.pos.0 - 0.5 && pos.0 < self.pos.0 - 0.5 + self.size.0 / 64. &&
-            pos.1 > self.pos.1 && pos.1 < self.pos.1 + self.size.0 / 64.;
+            pos.1 > self.pos.1 - self.size.2 / 64. && pos.1 < self.pos.1 + self.size.1 / 64.;
     }
 }

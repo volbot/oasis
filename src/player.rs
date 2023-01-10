@@ -1,5 +1,5 @@
 use macroquad::prelude::*;
-use crate::{camera::Camera, assets::Assets, inventory::Inventory, build::{BuildMap, BuildLayer}};
+use crate::{camera::Camera, assets::Assets, inventory::Inventory, build::BuildLayer};
 
 pub struct Player {
     pub loc: (f32, f32), //location as x,y vector
@@ -51,8 +51,11 @@ impl Player {
             }
         }
         self.dir = (temp.1-self.loc.1).atan2(temp.0-self.loc.0);
-        if bl.collide(temp) {
-            return
+        if bl.collide((temp.0,self.loc.1)) {
+            temp.0 = self.loc.0;
+        }
+        if bl.collide((self.loc.0,temp.1)) {
+            temp.1 = self.loc.1;
         }
         self.loc = temp;
     }
